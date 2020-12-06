@@ -1,15 +1,15 @@
 name: Documinder
 description: Reminder developer to update document for code change
-# inputs:
-#   GITHUB_TOKEN:
-#     description: "Github Token for authentication"
-#     required: true
-#   GITHUB_ACTOR:
-#     description: "Github owner"
-#     required: true
-#   GITHUB_REPOSITORY:
-#     description: "Github repository"
-#     required: true
+inputs:
+  GITHUB_TOKEN:
+    description: "Github Token for authentication"
+    required: true
+  GITHUB_ACTOR:
+    description: "Github owner"
+    required: true
+  GITHUB_REPOSITORY:
+    description: "Github repository"
+    required: true
 runs:
   using: "node12"
   main: "src/index.js"
