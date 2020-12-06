@@ -7,6 +7,8 @@
 
 const core = require('@actions/core');
 const github = require('@actions/github');
+const yaml = require('js-yaml')
+const fs = require('fs')
 const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_ACTOR } = process.env;
 
 // action file information: https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions
@@ -32,6 +34,13 @@ async function main() {
     for (item in files) {
       console.log("filename", files[item].filename);
     }
+
+    let fileContents = fs.readFileSync('./rules.yaml', 'utf8');
+    let data = yaml.safeLoad(fileContents);
+
+    console.log(data);
+
+    // core.setOutput('content', data)
 
   } catch (error) {
     console.log(`error occured ${error}`);
