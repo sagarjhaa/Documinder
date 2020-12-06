@@ -27,11 +27,10 @@ async function main() {
       pull_number: pull_number,
     });
 
-    console.log("data", pull_request_files.data);
+    const files = pull_request_files.data;
 
-    for (item in pull_request_files.data) {
-      console.log("item", item);
-      console.log("filename", item.filename);
+    for (item in files) {
+      console.log("filename", files[item].filename);
     }
 
   } catch (error) {
