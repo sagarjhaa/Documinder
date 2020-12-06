@@ -7,9 +7,9 @@
 
 const core = require('@actions/core');
 const github = require('@actions/github');
-const yaml = require('js-yaml')
-const fs = require('fs')
+const { getRulesContent } = require('./rules.js');
 const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_ACTOR } = process.env;
+const compare = require('./compare.js');
 
 // action file information: https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions
 async function main() {
@@ -23,6 +23,11 @@ async function main() {
 
     console.log(`Analyse PR ${pull_number} for repo ${repo}`)
 
+
+    const rules = getRulesContent();
+    const compareObj = new compare.Compare(rules)
+
+
     const pull_request_files = await octokit.pulls.listFiles({
       owner: owner,
       repo: repo,
@@ -31,15 +36,11 @@ async function main() {
 
     const files = pull_request_files.data;
 
-    for (item in files) {
-      console.log("filename", files[item].filename);
-      console.log("file-path", files[item].contents_url);
-    }
-
-    let fileContents = fs.readFileSync('./rules.yaml', 'utf8');
-    let data = yaml.safeLoad(fileContents);
-
-    console.log(data);
+    files.forEach(file => {
+      compareObj.comparePath(file.contents_url)
+      // console.log("filename", files.filename);
+      // console.log("file-path", files.contents_url);
+    })
 
     // core.setOutput('content', data)
 
