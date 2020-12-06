@@ -1,0 +1,15 @@
+name: Documinder
+description: Reminder developer to update document for code change
+inputs:
+  pr: #pr number
+    description: "PR under review"
+    required: true
+    default: undefined
+  rules: #rules file to compare the files
+    description: "rules yaml file to compare"
+    required: true
+    default: undefined
+runs:
+  using: "node12"
+  main: "index.js"
+#Slack notification is left to do
