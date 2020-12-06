@@ -5,7 +5,7 @@
 // slack message to intimate if we need an update
 // mail if we need to alert
 
-// const core = require('@actions/core');
+const core = require('@actions/core');
 const github = require('@actions/github');
 
 // action file information: https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions
