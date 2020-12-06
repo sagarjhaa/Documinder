@@ -11,5 +11,5 @@ inputs:
     default: undefined
 runs:
   using: "node12"
-  main: "index.js"
+  main: "src/index.js"
 #Slack notification is left to do
