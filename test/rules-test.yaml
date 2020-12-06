@@ -1,0 +1,11 @@
+rules:
+  file1:
+    path: "path to file"
+    documents:
+      - "document1"
+      - "document2"
+  file2:
+    path: "path to file 2"
+    documents:
+      - "document3"
+      - "document4"

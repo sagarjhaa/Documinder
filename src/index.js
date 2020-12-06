@@ -33,6 +33,7 @@ async function main() {
 
     for (item in files) {
       console.log("filename", files[item].filename);
+      console.log("file-path", files[item].contents_url);
     }
 
     let fileContents = fs.readFileSync('./rules.yaml', 'utf8');
