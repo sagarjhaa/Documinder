@@ -35,12 +35,12 @@ async function main() {
 
     files.forEach(file => {
       result = compareObj.comparePath(file.contents_url)
-      core.setOutput('content', result)
+      // core.setOutput('content', result)
       // console.log("filename", files.filename);
       // console.log("file-path", files.contents_url);
     })
 
-    // core.setOutput('content', data)
+    core.setOutput('content', "OUTPUT OUTPUT")
 
   } catch (error) {
     console.log(`error occured ${error}`);
