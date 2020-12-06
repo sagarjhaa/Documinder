@@ -24,8 +24,8 @@ async function main() {
 
     const octokit = github.getOctokit(github_token);//new github.GitHub(github_token);
     const context = github.context;
-    const pull_request_number = context.payload.pull_request.number;
-    console.log(pull_request_number)
+    const pull_number = context.payload.pull_request.number;
+    console.log(pull_number)
 
     const pull_request_files = await octokit.pulls.listFiles({
       owner: owner,
