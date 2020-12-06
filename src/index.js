@@ -26,19 +26,13 @@ async function main() {
     const pull_number = context.payload.pull_request.number;
     console.log(pull_number)
 
-    const { pull_request_files: data } = await octokit.pulls.listFiles({
+    const pull_request_files = await octokit.pulls.listFiles({
       owner: owner,
-      repo: "nasa-images",
+      repo: repo,
       pull_number: pull_number,
     });
 
-    // const pull_request_files = await octokit.pulls.listFiles({
-    //   owner: "sagarjhaa",
-    //   repo: "nasa-images",
-    //   pull_number: 6,
-    // });
-
-    console.log(pull_request_files);
+    console.log(pull_request_files.data);
 
   } catch (error) {
     console.log(`error occured ${error}`);
