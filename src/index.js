@@ -18,16 +18,15 @@ async function main() {
     console.log(repo)
     const owner = GITHUB_ACTOR //core.getInput("GITHUB_ACTOR", { required: true }) //github.context.repository_owner;
     console.log(owner)
+    console.log("GITHUB_WORKSPACE", GITHUB_WORKSPACE)
 
-
-    console.log("TOKEN_1", core.getInput("GITHUB_TOKEN_1", { required: true }))
 
     const octokit = github.getOctokit(github_token);//new github.GitHub(github_token);
     const context = github.context;
     const pull_number = context.payload.pull_request.number;
     console.log(pull_number)
 
-    const pull_request_files = await octokit.pulls.listFiles({
+    const { pull_request_files: data } = await octokit.pulls.listFiles({
       owner: owner,
       repo: "nasa-images",
       pull_number: pull_number,
