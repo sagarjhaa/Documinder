@@ -14,7 +14,7 @@ async function main() {
   try {
     const github_token = GITHUB_TOKEN//core.getInput("GITHUB_TOKEN", { required: true })
     console.log(github_token);
-    const repo = GITHUB_REPOSITORY;//core.getInput("GITHUB_REPOSITORY", { required: true }) //github.context.repository;
+    const repo = GITHUB_REPOSITORY.split("/")[1];//core.getInput("GITHUB_REPOSITORY", { required: true }) //github.context.repository;
     console.log(repo)
     const owner = GITHUB_ACTOR //core.getInput("GITHUB_ACTOR", { required: true }) //github.context.repository_owner;
     console.log(owner)
