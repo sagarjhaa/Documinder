@@ -20,13 +20,10 @@ async function main() {
     const octokit = github.getOctokit(github_token);
     const context = github.context;
     const pull_number = context.payload.pull_request.number;
-
-    console.log(`Analyse PR ${pull_number} for repo ${repo}`)
-
-
     const rules = getRulesContent();
     const compareObj = new compare.Compare(rules)
 
+    console.log(`Analyse PR ${pull_number} for repo ${repo}`)
 
     const pull_request_files = await octokit.pulls.listFiles({
       owner: owner,
@@ -37,7 +34,8 @@ async function main() {
     const files = pull_request_files.data;
 
     files.forEach(file => {
-      compareObj.comparePath(file.contents_url)
+      result = compareObj.comparePath(file.contents_url)
+      core.setOutput('content', result)
       // console.log("filename", files.filename);
       // console.log("file-path", files.contents_url);
     })

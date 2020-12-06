@@ -17,14 +17,18 @@ class Compare {
   comparePath(content_url = '') {
     const currentFilePath = this.prepareFilePath(content_url)
 
-
+    const matchResults = [];
     this.rules.forEach(rule => {
-      console.log('prFilePath  :', currentFilePath);
-      console.log('comparePath :', rule.path);
-      console.log('documents   :', rule.documents);
-      console.log("************************\n");
+      matchResults.push(
+        {
+          "prFilePath": currentFilePath,
+          "comparePath": rule.path,
+          "documents": rule.documents
+        }
+      )
     });
 
+    return matchResults;
   }
 }
 
