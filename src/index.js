@@ -15,11 +15,11 @@ async function main() {
     const github_token = core.getInput("GITHUB_TOKEN", { required: true })
     const octokit = github.getOctokit(github_token);//new github.GitHub(github_token);
     const context = github.context;
-    const owner = github.context.repository_owner;
-    const repo = github.context.repository;
+    const owner = core.getInput("GITHUB_ACTOR", { required: true }) //github.context.repository_owner;
+    const repo = core.getInput("GITHUB_REPOSITORY", { required: true }) //github.context.repository;
     const pull_request_number = context.payload.pull_request.number;
 
-    console.log(octokit);
+    console.log(github_token)
     console.log(owner)
     console.log(repo)
     console.log(pull_request_number)
