@@ -33,14 +33,14 @@ async function main() {
 
     const files = pull_request_files.data;
 
-    files.forEach(file => {
-      result = compareObj.comparePath(file.contents_url)
+    results = files.map(file => {
+      return compareObj.comparePath(file.contents_url)
       // core.setOutput('content', result)
       // console.log("filename", files.filename);
       // console.log("file-path", files.contents_url);
     })
 
-    core.setOutput('content', "OUTPUT OUTPUT")
+    core.setOutput('content', results)
 
   } catch (error) {
     console.log(`error occured ${error}`);
