@@ -1,0 +1,35 @@
+{
+  "name": "documinder",
+  "version": "1.0.0",
+  "description": "github action to review PR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagarjhaa/Documinder.git"
+  },
+  "keywords": [
+    "documinder",
+    "PR",
+    "document",
+    "reminder"
+  ],
+  "author": "sagarjhaa@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sagarjhaa/Documinder/issues"
+  },
+  "homepage": "https://github.com/sagarjhaa/Documinder#readme",
+  "dependencies": {
+    "@actions/artifact": "^0.4.1",
+    "@actions/cache": "^1.0.4",
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4",
+    "@actions/github": "^4.0.0",
+    "@actions/glob": "^0.1.1",
+    "@actions/io": "^1.0.2",
+    "@actions/tool-cache": "^1.6.1"
+  }
+}
