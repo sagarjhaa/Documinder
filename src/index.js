@@ -7,24 +7,19 @@
 
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { GITHUB_SHA, GITHUB_EVENT_PATH, GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_WORKSPACE, GITHUB_ACTOR } = process.env;
+const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_ACTOR } = process.env;
 
 // action file information: https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions
 async function main() {
   try {
-    const github_token = GITHUB_TOKEN//core.getInput("GITHUB_TOKEN", { required: true })
-    console.log(github_token);
-    const repo = GITHUB_REPOSITORY.split("/")[1];//core.getInput("GITHUB_REPOSITORY", { required: true }) //github.context.repository;
-    console.log(repo)
-    const owner = GITHUB_ACTOR //core.getInput("GITHUB_ACTOR", { required: true }) //github.context.repository_owner;
-    console.log(owner)
-    console.log("GITHUB_WORKSPACE", GITHUB_WORKSPACE)
-
-
-    const octokit = github.getOctokit(github_token);//new github.GitHub(github_token);
+    const github_token = GITHUB_TOKEN;
+    const repo = GITHUB_REPOSITORY.split("/")[1];
+    const owner = GITHUB_ACTOR;
+    const octokit = github.getOctokit(github_token);
     const context = github.context;
     const pull_number = context.payload.pull_request.number;
-    console.log(pull_number)
+
+    console.log(`Analyse PR ${pull_number} for repo ${repo}`)
 
     const pull_request_files = await octokit.pulls.listFiles({
       owner: owner,
@@ -32,7 +27,9 @@ async function main() {
       pull_number: pull_number,
     });
 
-    console.log(pull_request_files.data);
+    for (item in pull_request_files.data) {
+      console.log(item.filename);
+    }
 
   } catch (error) {
     console.log(`error occured ${error}`);
