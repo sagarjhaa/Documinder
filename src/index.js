@@ -19,6 +19,11 @@ async function main() {
     const repo = github.repository;
     const pull_request_number = context.payload.pull_request.number;
 
+    console.log(octokit);
+    console.log(owner)
+    console.log(repo)
+    console.log(pull_request_number)
+
     const pull_request_files = await octokit.pulls.listFiles({
       owner,
       repo,
