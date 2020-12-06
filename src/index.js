@@ -20,16 +20,24 @@ async function main() {
     console.log(owner)
 
 
+    console.log("TOKEN_1", core.getInput("GITHUB_TOKEN_1", { required: true }))
+
     const octokit = github.getOctokit(github_token);//new github.GitHub(github_token);
     const context = github.context;
     const pull_request_number = context.payload.pull_request.number;
     console.log(pull_request_number)
 
     const pull_request_files = await octokit.pulls.listFiles({
-      owner,
-      repo,
-      pull_request_number,
+      owner: owner,
+      repo: "nasa-images",
+      pull_number: pull_number,
     });
+
+    // const pull_request_files = await octokit.pulls.listFiles({
+    //   owner: "sagarjhaa",
+    //   repo: "nasa-images",
+    //   pull_number: 6,
+    // });
 
     console.log(pull_request_files);
 

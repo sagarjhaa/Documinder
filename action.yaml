@@ -1,9 +1,10 @@
 name: Documinder
 description: Reminder developer to update document for code change
 inputs:
-  GITHUB_TOKEN:
+  GITHUB_TOKEN_1:
     description: "Github Token for authentication"
     required: true
+    default: ${{ github.token }}
   GITHUB_ACTOR:
     description: "Github owner"
     required: true
