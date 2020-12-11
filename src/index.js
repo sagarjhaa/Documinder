@@ -39,7 +39,7 @@ async function main() {
     //   // console.log("filename", files.filename);
     //   // console.log("file-path", files.contents_url);
     // })
-
+    console.log(["One", "Two"])
     core.setOutput('content', ["One", "Two"])
 
   } catch (error) {
